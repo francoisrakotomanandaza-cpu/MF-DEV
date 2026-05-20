@@ -16,8 +16,6 @@
 </tr>
 </table>
 
-<h3 align="center">Full Stack Developer • Digital Creative • Media & Web Enth
-
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=34&duration=2500&pause=1000&color=FF7B00&background=00000000&center=true&vCenter=true&multiline=true&repeat=true&width=1000&height=120&lines=+WELCOME+TO+MF.DEV+;+MANANDAZA+FRANÇOIS;+FULL+STACK+DEVELOPER;+MODERN+UI%2FUX+DESIGNER;+BUILDING+FUTURISTIC+WEB+EXPERIENCES" />
 </p>
@@ -83,7 +81,7 @@ Focused on:
   </a>
 
   <a href="https://facebook.com/YOUR_PROFILE">
-    <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" />
+    <img src="[https://img.shields.io/badge/Facebook-1877F2](https://www.facebook.com/manandaza.francois?locale=fr_FR)?style=for-the-badge&logo=facebook&logoColor=white" />
   </a>
 
   <a href="https://linkedin.com/in/YOUR_PROFILE">
