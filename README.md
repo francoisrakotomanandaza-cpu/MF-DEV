@@ -1,6 +1,5 @@
 # Welcome to MF.DEV-MANANDAZA François
 
-<h1 align="center">Hi, I'm Manandaza François </h1>
 <table align="center">
 <tr>
 <td>
@@ -15,7 +14,7 @@
 </td>
 </tr>
 </table>
-
+<br><br>
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=34&duration=2500&pause=1000&color=FF7B00&background=00000000&center=true&vCenter=true&multiline=true&repeat=true&width=1000&height=120&lines=+WELCOME+TO+MF.DEV+;+MANANDAZA+FRANÇOIS;/>
 </p>
