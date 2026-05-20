@@ -70,27 +70,7 @@ Focused on:
 | Portfolio Website            | Modern animated portfolio        |
 | University Management System | Academic management dashboard    |
 | Media Dashboard              | Multimedia administration panel  |
-
 ---
-
-# Connect With Me
-
-<p align="center">
-  <a href="https://github.com/YOUR_USERNAME">
-    <img src="https://img.shields.io/badge/GitHub-111111?style=for-the-badge&logo=github&logoColor=white" />
-  </a>
-
-  <a href="https://facebook.com/YOUR_PROFILE">
-    <img src="[https://img.shields.io/badge/Facebook-1877F2](https://www.facebook.com/manandaza.francois?locale=fr_FR)?style=for-the-badge&logo=facebook&logoColor=white" />
-  </a>
-
-  <a href="https://linkedin.com/in/YOUR_PROFILE">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
-  </a>
-</p>
-
----
-
 # Quote
 
 <p align="center">
