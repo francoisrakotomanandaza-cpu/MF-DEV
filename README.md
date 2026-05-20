@@ -1,0 +1,123 @@
+# 👋 Welcome to MF.DEV
+
+<h1 align="center">Hi, I'm Manandaza François 🚀</h1>
+<h3 align="center">Full Stack Developer • Digital Creative • Media & Web Enthusiast</h3>
+
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=34&duration=2500&pause=1000&color=FF7B00&background=00000000&center=true&vCenter=true&multiline=true&repeat=true&width=1000&height=120&lines=⚡+WELCOME+TO+MF.DEV+⚡;🚀+MANANDAZA+FRANÇOIS;💻+FULL+STACK+DEVELOPER;🎨+MODERN+UI%2FUX+DESIGNER;🔥+BUILDING+FUTURISTIC+WEB+EXPERIENCES" />
+</p>
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=250&text=MF.DEV&fontAlign=50&fontAlignY=40&color=0:000000,50:FF6B00,100:000000&fontColor=ffffff&fontSize=70&animation=fadeIn" />
+</p>
+
+<p align="center">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWhzZzZwaDBhY3BnNXR3cGFmNmd0M2E5Ym9mY2lnN2E0b29uOXI5NyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l378c04F2fjeZ7vH2/giphy.gif" width="250" />
+</p>
+
+---
+
+# 🧑‍💻 About Me
+
+```yaml
+Name: Manandaza François
+Brand: MF.DEV
+Role: Full Stack Developer
+Country: Madagascar
+Speciality: Modern Web Applications
+Focus: UI/UX + Media Platforms + Web Technologies
+```
+
+✨ Passionate about creating modern, elegant and high-performance websites.
+
+🔥 Focused on:
+
+* Full Stack Development
+* Media & Streaming Platforms
+* Modern UI/UX Design
+* Professional Web Applications
+* Responsive & Interactive Websites
+
+---
+
+# ⚡ Tech Stack
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=html,css,js,react,nodejs,express,mongodb,tailwind,wordpress,github,vscode" />
+</p>
+
+---
+
+# 🚀 Featured Projects
+
+| Project                         | Description                      |
+| ------------------------------- | -------------------------------- |
+| 📺 TV Streaming Platform        | Modern media & TV platform       |
+| 📰 News Website                 | Professional digital news system |
+| 💼 Portfolio Website            | Modern animated portfolio        |
+| 🎓 University Management System | Academic management dashboard    |
+| 📊 Media Dashboard              | Multimedia administration panel  |
+
+---
+
+# 📈 GitHub Stats
+
+<p align="center">
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=tokyonight&hide_border=true" />
+
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=tokyonight&hide_border=true" />
+</p>
+
+---
+
+# 🔥 Contribution Activity
+
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=YOUR_USERNAME&theme=tokyo-night&hide_border=true" />
+</p>
+
+---
+
+# 🌐 Connect With Me
+
+<p align="center">
+  <a href="https://github.com/YOUR_USERNAME">
+    <img src="https://img.shields.io/badge/GitHub-111111?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+
+  <a href="https://facebook.com/YOUR_PROFILE">
+    <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" />
+  </a>
+
+  <a href="https://linkedin.com/in/YOUR_PROFILE">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+</p>
+
+---
+
+# 🧠 Quote
+
+<p align="center">
+  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" />
+</p>
+
+---
+
+# 🐍 Contribution Snake Animation
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Platane/snk/output/github-contribution-grid-snake-dark.svg" />
+</p>
+
+---
+
+# 👀 Profile Views
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=YOUR_USERNAME&label=Profile%20Views&color=orange&style=for-the-badge" />
+</p>
+
+---
+
+<h3 align="center">⚡ MF.DEV — Building The Future With Code ⚡</h3>
