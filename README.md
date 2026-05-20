@@ -17,7 +17,7 @@
 </table>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=34&duration=2500&pause=1000&color=FF7B00&background=00000000&center=true&vCenter=true&multiline=true&repeat=true&width=1000&height=120&lines=+WELCOME+TO+MF.DEV+;+MANANDAZA+FRANÇOIS;+FULL+STACK+DEVELOPER;+MODERN+UI%2FUX+DESIGNER;+BUILDING+FUTURISTIC+WEB+EXPERIENCES" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=34&duration=2500&pause=1000&color=FF7B00&background=00000000&center=true&vCenter=true&multiline=true&repeat=true&width=1000&height=120&lines=+WELCOME+TO+MF.DEV+;+MANANDAZA+FRANÇOIS;/>
 </p>
 
 <p align="center">
