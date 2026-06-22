@@ -270,15 +270,16 @@
             flex-direction: column;
         }
 
+        /* Zone image SANS cadre restrictif */
         .profile-image-zone {
             position: relative;
             width: 100%;
             height: 320px;
             overflow: hidden;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
             background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%);
         }
 
+        /* Suppression du clip-path et des effets de cadre */
         .profile-image-zone::before {
             content: '';
             position: absolute;
@@ -290,8 +291,9 @@
                     rgba(224, 123, 60, 0.05) 0%,
                     rgba(0, 0, 0, 0) 30%,
                     rgba(0, 0, 0, 0) 70%,
-                    rgba(224, 123, 60, 0.1) 100%);
+                    rgba(0, 0, 0, 0.4) 100%);
             z-index: 2;
+            pointer-events: none;
         }
 
         .profile-image-zone img.real-photo {
@@ -311,6 +313,7 @@
             transform: scale(1.05);
         }
 
+        /* Placeholder image - sans cadre */
         .photo-placeholder {
             width: 100%;
             height: 100%;
@@ -533,7 +536,7 @@
             margin-top: 20px;
         }
 
-        /* --- SERVICES (avec filigranes) --- */
+        /* --- SERVICES --- */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1526,7 +1529,7 @@
             document.head.appendChild(style);
         })();
 
-        // --- Gestion de la photo de profil ---
+        // --- Gestion de la photo de profil (sans cadre) ---
         (function() {
             var img = document.getElementById('profilePhoto');
             var ph = document.getElementById('photoPlaceholder');
@@ -1609,17 +1612,14 @@
         }
 
         function animateOnScroll() {
-            // Titres
             document.querySelectorAll('.section-title:not(.visible)').forEach(function(t) {
                 if (isInViewport(t, 200)) t.classList.add('visible');
             });
-            // Cartes services
             document.querySelectorAll('.service-card:not(.visible)').forEach(function(c, i) {
                 if (isInViewport(c, 200)) {
                     setTimeout(function() { c.classList.add('visible'); }, i * 200);
                 }
             });
-            // Cartes compétences
             document.querySelectorAll('.viz-card:not(.visible)').forEach(function(c, i) {
                 if (isInViewport(c, 250)) {
                     setTimeout(function() {
