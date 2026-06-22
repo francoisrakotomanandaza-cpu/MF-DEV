@@ -228,33 +228,30 @@
             flex-wrap: wrap;
         }
 
-        /* --- PROFIL CARD --- */
+        /* --- PROFIL CARD (STYLE STANDARD) --- */
         .profile-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            perspective: 1000px;
         }
 
         .profile-card {
             position: relative;
-            width: 370px;
-            height: 450px;
-            border-radius: 30px;
-            overflow: hidden;
+            width: 350px;
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 25px;
+            overflow: hidden;
             box-shadow:
                 0 30px 60px rgba(0, 0, 0, 0.4),
                 0 0 0 1px rgba(224, 123, 60, 0.05) inset,
                 0 0 30px rgba(224, 123, 60, 0.05);
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            transform-style: preserve-3d;
         }
 
         .profile-card:hover {
-            transform: translateY(-10px) rotateY(5deg) rotateX(2deg);
+            transform: translateY(-10px);
             box-shadow:
                 0 40px 80px rgba(0, 0, 0, 0.5),
                 0 0 0 1px var(--primary-border) inset,
@@ -262,38 +259,13 @@
             border-color: var(--primary-border);
         }
 
-        .profile-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Zone image SANS cadre restrictif */
+        /* --- ZONE PHOTO STANDARD --- */
         .profile-image-zone {
             position: relative;
             width: 100%;
-            height: 320px;
+            height: 350px;
             overflow: hidden;
             background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%);
-        }
-
-        /* Suppression du clip-path et des effets de cadre */
-        .profile-image-zone::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg,
-                    rgba(224, 123, 60, 0.05) 0%,
-                    rgba(0, 0, 0, 0) 30%,
-                    rgba(0, 0, 0, 0) 70%,
-                    rgba(0, 0, 0, 0.4) 100%);
-            z-index: 2;
-            pointer-events: none;
         }
 
         .profile-image-zone img.real-photo {
@@ -305,15 +277,28 @@
             position: absolute;
             top: 0;
             left: 0;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
             z-index: 1;
         }
 
         .profile-card:hover .profile-image-zone img.real-photo {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
-        /* Placeholder image - sans cadre */
+        /* Overlay subtil pour améliorer la lisibilité */
+        .profile-image-zone::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Placeholder image */
         .photo-placeholder {
             width: 100%;
             height: 100%;
@@ -342,7 +327,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             transition: all 0.3s ease;
             background: var(--primary-subtle);
         }
@@ -358,7 +343,6 @@
             height: 40px;
             stroke: var(--primary);
             fill: none;
-            transition: all 0.3s ease;
         }
 
         .photo-placeholder-text {
@@ -366,37 +350,33 @@
             font-size: 14px;
             font-weight: 500;
             text-align: center;
-            letter-spacing: 0.5px;
         }
 
         .photo-placeholder-filename {
             color: rgba(255, 255, 255, 0.3);
             font-size: 12px;
-            margin-top: 8px;
+            margin-top: 6px;
             font-family: 'Courier New', monospace;
             background: rgba(0, 0, 0, 0.3);
             padding: 4px 12px;
             border-radius: 4px;
         }
 
+        /* --- INFOS PROFIL STANDARD --- */
         .profile-info-zone {
-            padding: 20px 25px;
+            padding: 25px 30px 30px;
             text-align: center;
+            background: rgba(10, 10, 10, 0.9);
             position: relative;
             z-index: 3;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(10, 10, 10, 0.9));
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
         .profile-name {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
-            color: #e0e0e0;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
+            color: #e8e8e8;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
         }
 
         .profile-name span {
@@ -404,11 +384,11 @@
         }
 
         .profile-title {
-            font-size: 13px;
+            font-size: 14px;
             color: #888;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .profile-status {
@@ -418,29 +398,23 @@
             background: var(--primary-subtle);
             border: 1px solid var(--primary-border);
             border-radius: 20px;
-            padding: 6px 15px;
+            padding: 6px 18px;
             font-size: 12px;
             color: var(--primary-light);
             font-weight: 500;
-            margin: 0 auto;
         }
 
         .status-dot {
-            width: 7px;
-            height: 7px;
-            background: var(--primary);
+            width: 8px;
+            height: 8px;
+            background: #4caf50;
             border-radius: 50%;
             animation: statusPulse 2s ease-in-out infinite;
         }
 
         @keyframes statusPulse {
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(224, 123, 60, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 0 8px rgba(224, 123, 60, 0);
-            }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(76, 175, 80, 0); }
         }
 
         /* --- BOUTONS --- */
@@ -1039,7 +1013,9 @@
             }
             .profile-card {
                 width: 320px;
-                height: 420px;
+            }
+            .profile-image-zone {
+                height: 320px;
             }
             .hero-text h1 {
                 font-size: 42px;
@@ -1091,7 +1067,9 @@
             }
             .profile-card {
                 width: 300px;
-                height: 400px;
+            }
+            .profile-image-zone {
+                height: 300px;
             }
             .hero-text h1 {
                 font-size: 36px;
@@ -1118,7 +1096,9 @@
             }
             .profile-card {
                 width: 280px;
-                height: 380px;
+            }
+            .profile-image-zone {
+                height: 280px;
             }
             .section-title h2 {
                 font-size: 28px;
@@ -1136,9 +1116,6 @@
             .social-links {
                 justify-content: center;
             }
-            .profile-image-zone {
-                height: 280px;
-            }
         }
 
         @media (max-width: 400px) {
@@ -1153,14 +1130,13 @@
             }
             .profile-card {
                 width: 260px;
-                height: 360px;
+            }
+            .profile-image-zone {
+                height: 260px;
             }
             .btn {
                 padding: 12px 28px;
                 font-size: 12px;
-            }
-            .profile-image-zone {
-                height: 250px;
             }
         }
     </style>
@@ -1210,27 +1186,25 @@
                 </div>
                 <div class="profile-container">
                     <div class="profile-card">
-                        <div class="profile-card-inner">
-                            <div class="profile-image-zone">
-                                <div class="photo-placeholder" id="photoPlaceholder">
-                                    <div class="photo-placeholder-icon">
-                                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                            <circle cx="12" cy="7" r="4"></circle>
-                                        </svg>
-                                    </div>
-                                    <div class="photo-placeholder-text">Votre photo ici</div>
-                                    <div class="photo-placeholder-filename">profils.jpg</div>
+                        <div class="profile-image-zone">
+                            <div class="photo-placeholder" id="photoPlaceholder">
+                                <div class="photo-placeholder-icon">
+                                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
                                 </div>
-                                <img class="real-photo" id="profilePhoto" src="profils.png" alt="François RAKOTOMANANDAZA" style="display:none;">
+                                <div class="photo-placeholder-text">Photo de profil</div>
+                                <div class="photo-placeholder-filename">profils.jpg</div>
                             </div>
-                            <div class="profile-info-zone">
-                                <div class="profile-name">François <span>R.</span></div>
-                                <div class="profile-title">Développeur Web & Multimédia</div>
-                                <div class="profile-status">
-                                    <span class="status-dot"></span>
-                                    Disponible
-                                </div>
+                            <img class="real-photo" id="profilePhoto" src="profils.png" alt="François RAKOTOMANANDAZA" style="display:none;">
+                        </div>
+                        <div class="profile-info-zone">
+                            <div class="profile-name">François <span>R.</span></div>
+                            <div class="profile-title">Développeur Web & Multimédia</div>
+                            <div class="profile-status">
+                                <span class="status-dot"></span>
+                                Disponible
                             </div>
                         </div>
                     </div>
@@ -1345,7 +1319,6 @@
             </div>
 
             <div class="viz-grid">
-                <!-- Développement -->
                 <div class="viz-card">
                     <h4><span></span> Développement Web</h4>
                     <div id="skillBars">
@@ -1397,7 +1370,6 @@
                     </div>
                 </div>
 
-                <!-- Multimédia -->
                 <div class="viz-card">
                     <h4><span></span> Multimédia & Création</h4>
                     <div id="skillBarsMultimedia">
@@ -1521,15 +1493,7 @@
 
     <!-- SCRIPTS -->
     <script>
-        // --- Injection CSS pour les variables (si besoin) ---
-        (function() {
-            var style = document.createElement('style');
-            style.textContent =
-                ':root{--primary:#e07b3c;--primary-light:#f0a068;--primary-dark:#c45e28;--primary-subtle:rgba(224,123,60,0.08);--primary-medium:rgba(224,123,60,0.15);--primary-border:rgba(224,123,60,0.3)}';
-            document.head.appendChild(style);
-        })();
-
-        // --- Gestion de la photo de profil (sans cadre) ---
+        // --- Gestion de la photo de profil ---
         (function() {
             var img = document.getElementById('profilePhoto');
             var ph = document.getElementById('photoPlaceholder');
