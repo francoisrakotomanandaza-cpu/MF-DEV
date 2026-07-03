@@ -21,6 +21,7 @@
             --primary-medium: rgba(224, 123, 60, 0.15);
             --primary-border: rgba(224, 123, 60, 0.3);
             --font-serif: Georgia, 'Times New Roman', Times, serif;
+            --transition-speed: 0.7s;
         }
 
         html {
@@ -33,6 +34,21 @@
             font-family: var(--font-serif);
             overflow-x: hidden;
             line-height: 1.6;
+        }
+
+        /* --- SCROLLBAR --- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-dark);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
         }
 
         /* --- NAVBAR --- */
@@ -82,7 +98,6 @@
             display: flex;
             list-style: none;
             gap: 30px;
-            align-items: center;
         }
 
         .navbar-menu a {
@@ -90,17 +105,11 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 14px;
-            transition: color 0.3s, border-color 0.3s;
+            transition: color 0.3s;
             padding: 5px 10px;
             position: relative;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-bottom: 2px solid transparent;
-        }
-
-        .navbar-menu a.active {
-            color: var(--primary-light);
-            border-bottom-color: var(--primary);
         }
 
         .navbar-menu a::after {
@@ -109,36 +118,19 @@
             bottom: -2px;
             left: 50%;
             width: 0;
-            height: 2px;
+            height: 1px;
             background: var(--primary);
             transition: all 0.3s;
             transform: translateX(-50%);
         }
 
-        .navbar-menu a:hover::after {
+        .navbar-menu a:hover::after,
+        .navbar-menu a.active::after {
             width: 100%;
         }
-        .navbar-menu a:hover {
+        .navbar-menu a:hover,
+        .navbar-menu a.active {
             color: var(--primary-light);
-        }
-
-        /* Indicateur de section (petit point) */
-        .section-indicator {
-            display: flex;
-            gap: 8px;
-            margin-left: 20px;
-        }
-        .section-indicator .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #444;
-            transition: background 0.3s, transform 0.3s;
-            cursor: pointer;
-        }
-        .section-indicator .dot.active {
-            background: var(--primary);
-            transform: scale(1.3);
         }
 
         .navbar-toggle {
@@ -157,6 +149,86 @@
             color: white;
         }
 
+        /* --- SECTION NAVIGATION (boutons suivant/précédent) --- */
+        .section-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .section-nav .btn {
+            min-width: 160px;
+            text-align: center;
+            padding: 12px 25px;
+        }
+
+        .section-nav .btn:only-child {
+            margin: 0 auto;
+        }
+
+        /* --- INDICATEUR DE SECTION ACTIVE --- */
+        .section-indicator {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 12px 8px;
+            border-radius: 30px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-indicator .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .section-indicator .dot:hover {
+            transform: scale(1.3);
+            background: var(--primary-light);
+        }
+
+        .section-indicator .dot.active {
+            background: var(--primary);
+            border-color: var(--primary-light);
+            box-shadow: 0 0 20px rgba(224, 123, 60, 0.5);
+            transform: scale(1.2);
+        }
+
+        .section-indicator .dot .tooltip {
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            font-family: var(--font-serif);
+        }
+
+        .section-indicator .dot:hover .tooltip {
+            opacity: 1;
+        }
+
         /* --- UTILITAIRES --- */
         .container {
             max-width: 1200px;
@@ -166,16 +238,9 @@
 
         .section {
             padding: 80px 0;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            scroll-margin-top: 80px;
         }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .section.bg-dark {
             background: rgba(0, 0, 0, 0.2);
         }
@@ -472,6 +537,7 @@
             position: relative;
             overflow: hidden;
             border: none;
+            font-family: var(--font-serif);
         }
 
         .btn-primary {
@@ -507,6 +573,14 @@
         .section-title {
             text-align: center;
             margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-title h2 {
@@ -532,7 +606,7 @@
             border-radius: 2px;
         }
 
-        .section.visible .section-title h2::after {
+        .section-title.visible h2::after {
             width: 70px;
         }
 
@@ -667,7 +741,7 @@
             font-weight: 500;
             font-size: 13px;
             transition: all 0.3s;
-            cursor: pointer;
+            cursor: default;
             letter-spacing: 0.5px;
         }
 
@@ -1117,8 +1191,10 @@
                 grid-template-columns: 1fr;
                 gap: 25px;
             }
-            .section-indicator {
-                display: none;
+            .section-nav .btn {
+                min-width: 120px;
+                padding: 10px 18px;
+                font-size: 12px;
             }
         }
 
@@ -1154,6 +1230,14 @@
             .social-links {
                 justify-content: center;
             }
+            .section-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            .section-nav .btn {
+                width: 100%;
+                max-width: 260px;
+            }
         }
 
         @media (max-width: 400px) {
@@ -1184,31 +1268,42 @@
     <!-- SCROLL TO TOP -->
     <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
 
+    <!-- INDICATEUR DE SECTION (navigation rapide) -->
+    <div class="section-indicator" id="sectionIndicator">
+        <div class="dot active" data-target="accueil" title="Accueil">
+            <span class="tooltip">Accueil</span>
+        </div>
+        <div class="dot" data-target="services" title="Services">
+            <span class="tooltip">Services</span>
+        </div>
+        <div class="dot" data-target="projets" title="Projets">
+            <span class="tooltip">Projets</span>
+        </div>
+        <div class="dot" data-target="apropos" title="Compétences">
+            <span class="tooltip">Compétences</span>
+        </div>
+        <div class="dot" data-target="contact" title="Contact">
+            <span class="tooltip">Contact</span>
+        </div>
+    </div>
+
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
         <div class="container">
             <a class="navbar-brand" href="#accueil">MF<span>=DEV</span></a>
             <button class="navbar-toggle" onclick="toggleMenu()">☰</button>
             <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="#accueil" onclick="closeMenu()" data-section="accueil"><strong>ACCUEIL</strong></a></li>
-                <li><a href="#services" onclick="closeMenu()" data-section="services"><strong>SERVICES</strong></a></li>
-                <li><a href="#projets" onclick="closeMenu()" data-section="projets"><strong>PROJET</strong></a></li>
-                <li><a href="#apropos" onclick="closeMenu()" data-section="apropos"><strong>À PROPOS</strong></a></li>
-                <li><a href="#contact" onclick="closeMenu()" data-section="contact"><strong>CONTACT</strong></a></li>
+                <li><a href="#accueil" data-section="accueil" onclick="closeMenu()"><strong>ACCUEIL</strong></a></li>
+                <li><a href="#services" data-section="services" onclick="closeMenu()"><strong>SERVICES</strong></a></li>
+                <li><a href="#projets" data-section="projets" onclick="closeMenu()"><strong>PROJET</strong></a></li>
+                <li><a href="#apropos" data-section="apropos" onclick="closeMenu()"><strong>À PROPOS</strong></a></li>
+                <li><a href="#contact" data-section="contact" onclick="closeMenu()"><strong>CONTACT</strong></a></li>
             </ul>
-            <!-- Indicateur de section (points) -->
-            <div class="section-indicator" id="sectionIndicator">
-                <span class="dot active" data-index="0"></span>
-                <span class="dot" data-index="1"></span>
-                <span class="dot" data-index="2"></span>
-                <span class="dot" data-index="3"></span>
-                <span class="dot" data-index="4"></span>
-            </div>
         </div>
     </nav>
 
     <!-- HERO -->
-    <section id="accueil" class="hero-section section visible">
+    <section id="accueil" class="hero-section section" data-section="accueil">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
@@ -1256,11 +1351,16 @@
                     </div>
                 </div>
             </div>
+            <!-- Navigation section -->
+            <div class="section-nav">
+                <span></span>
+                <a href="#services" class="btn btn-primary">Section suivante →</a>
+            </div>
         </div>
     </section>
 
     <!-- SERVICES -->
-    <section id="services" class="section bg-dark">
+    <section id="services" class="section" data-section="services">
         <div class="container">
             <div class="section-title">
                 <h2>NOTRE PLAISIR C'EST LA <span class="orange-text">SATISFACTION</span> DES CLIENTS</h2>
@@ -1299,11 +1399,17 @@
                     <span><span class="btn-icon">→</span> Savoir plus</span>
                 </a>
             </div>
+
+            <!-- Navigation section -->
+            <div class="section-nav">
+                <a href="#accueil" class="btn btn-secondary">← Section précédente</a>
+                <a href="#projets" class="btn btn-primary">Section suivante →</a>
+            </div>
         </div>
     </section>
 
     <!-- PROJETS / STATS -->
-    <section id="projets" class="section">
+    <section id="projets" class="section bg-dark" data-section="projets">
         <div class="container">
             <div class="section-title">
                 <h2>REJOIGNEZ-<span class="orange-text">MOI</span></h2>
@@ -1353,11 +1459,17 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Navigation section -->
+            <div class="section-nav">
+                <a href="#services" class="btn btn-secondary">← Section précédente</a>
+                <a href="#apropos" class="btn btn-primary">Section suivante →</a>
+            </div>
         </div>
     </section>
 
     <!-- COMPÉTENCES -->
-    <section id="apropos" class="section bg-dark">
+    <section id="apropos" class="section" data-section="apropos">
         <div class="container">
             <div class="section-title">
                 <h2>COMPÉTENCES ET <span class="orange-text">PROGRESSION</span></h2>
@@ -1458,11 +1570,17 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Navigation section -->
+            <div class="section-nav">
+                <a href="#projets" class="btn btn-secondary">← Section précédente</a>
+                <a href="#contact" class="btn btn-primary">Section suivante →</a>
+            </div>
         </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section">
+    <section id="contact" class="section bg-dark" data-section="contact">
         <div class="container">
             <div class="section-title">
                 <h2>CONTACTEZ-<span class="orange-text">MOI</span></h2>
@@ -1507,6 +1625,12 @@
             <p style="text-align:center; margin-top:15px; font-size:12px; color:#666;">
                 Vos données sont envoyées via Formulaire sécurisé.
             </p>
+
+            <!-- Navigation section -->
+            <div class="section-nav">
+                <a href="#apropos" class="btn btn-secondary">← Section précédente</a>
+                <span></span>
+            </div>
         </div>
     </section>
 
@@ -1567,32 +1691,31 @@
             }
         })();
 
-        // --- Navbar / Scroll & active link ---
-        const sections = ['accueil', 'services', 'projets', 'apropos', 'contact'];
-        const navLinks = document.querySelectorAll('.navbar-menu a');
-        const dots = document.querySelectorAll('.section-indicator .dot');
+        // --- Navbar / Scroll / Section active ---
+        var sections = document.querySelectorAll('[data-section]');
+        var navLinks = document.querySelectorAll('.navbar-menu a[data-section]');
+        var dots = document.querySelectorAll('.section-indicator .dot');
 
         function updateActiveSection() {
-            let current = '';
-            const scrollY = window.scrollY + 120; // offset pour la navbar
+            var current = '';
+            var scrollPos = window.scrollY + 120;
 
-            sections.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    const top = el.offsetTop;
-                    const height = el.offsetHeight;
-                    if (scrollY >= top && scrollY < top + height) {
-                        current = id;
-                    }
+            sections.forEach(function(sec) {
+                var top = sec.offsetTop;
+                var height = sec.offsetHeight;
+                if (scrollPos >= top && scrollPos < top + height) {
+                    current = sec.getAttribute('data-section');
                 }
             });
 
-            navLinks.forEach(link => {
-                link.classList.toggle('active', link.dataset.section === current);
+            // Nav links
+            navLinks.forEach(function(link) {
+                link.classList.toggle('active', link.getAttribute('data-section') === current);
             });
 
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', sections[index] === current);
+            // Dots
+            dots.forEach(function(dot) {
+                dot.classList.toggle('active', dot.getAttribute('data-target') === current);
             });
         }
 
@@ -1605,9 +1728,15 @@
             animateOnScroll();
         });
 
-        // --- Au chargement, on vérifie la section active ---
-        document.addEventListener('DOMContentLoaded', function() {
-            updateActiveSection();
+        // Clic sur les dots pour naviguer
+        dots.forEach(function(dot) {
+            dot.addEventListener('click', function() {
+                var target = this.getAttribute('data-target');
+                var el = document.querySelector('[data-section="' + target + '"]');
+                if (el) {
+                    window.scrollTo({ top: el.offsetTop - 70, behavior: 'smooth' });
+                }
+            });
         });
 
         function scrollToTop() {
@@ -1622,7 +1751,16 @@
             document.getElementById('navbarMenu').classList.remove('active');
         }
 
-        // --- Smooth scroll (déjà géré par CSS scroll-behavior: smooth) ---
+        // --- Smooth scroll pour les ancres ---
+        document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                var h = this.getAttribute('href');
+                if (h === '#') return;
+                e.preventDefault();
+                var t = document.querySelector(h);
+                if (t) window.scrollTo({ top: t.offsetTop - 70, behavior: 'smooth' });
+            });
+        });
 
         // --- Formulaire ---
         function handleSubmit(e) {
@@ -1647,19 +1785,14 @@
         }
 
         function animateOnScroll() {
-            // Sections (déjà visible pour l'héro)
-            document.querySelectorAll('.section:not(.hero-section):not(.visible)').forEach(function(t) {
-                if (isInViewport(t, 150)) t.classList.add('visible');
+            document.querySelectorAll('.section-title:not(.visible)').forEach(function(t) {
+                if (isInViewport(t, 200)) t.classList.add('visible');
             });
-
-            // Service cards
             document.querySelectorAll('.service-card:not(.visible)').forEach(function(c, i) {
                 if (isInViewport(c, 200)) {
                     setTimeout(function() { c.classList.add('visible'); }, i * 200);
                 }
             });
-
-            // Viz cards
             document.querySelectorAll('.viz-card:not(.visible)').forEach(function(c, i) {
                 if (isInViewport(c, 250)) {
                     setTimeout(function() {
@@ -1707,8 +1840,6 @@
 
         // --- Initialisation au chargement ---
         document.addEventListener('DOMContentLoaded', function() {
-            // On rend la section hero déjà visible
-            document.querySelector('.hero-section')?.classList.add('visible');
             setTimeout(animateOnScroll, 500);
             var vizCards = document.querySelectorAll('.viz-card');
             vizCards.forEach(function(card) {
@@ -1717,6 +1848,7 @@
                     if (card.querySelector('.skill-bar-fill')) animateSkillBars(card);
                 }
             });
+            updateActiveSection();
         });
     </script>
 
