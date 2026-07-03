@@ -23,6 +23,10 @@
             --font-serif: Georgia, 'Times New Roman', Times, serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
             color: #ffffff;
@@ -78,6 +82,7 @@
             display: flex;
             list-style: none;
             gap: 30px;
+            align-items: center;
         }
 
         .navbar-menu a {
@@ -85,11 +90,17 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 14px;
-            transition: color 0.3s;
+            transition: color 0.3s, border-color 0.3s;
             padding: 5px 10px;
             position: relative;
             text-transform: uppercase;
             letter-spacing: 1px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .navbar-menu a.active {
+            color: var(--primary-light);
+            border-bottom-color: var(--primary);
         }
 
         .navbar-menu a::after {
@@ -98,7 +109,7 @@
             bottom: -2px;
             left: 50%;
             width: 0;
-            height: 1px;
+            height: 2px;
             background: var(--primary);
             transition: all 0.3s;
             transform: translateX(-50%);
@@ -109,6 +120,25 @@
         }
         .navbar-menu a:hover {
             color: var(--primary-light);
+        }
+
+        /* Indicateur de section (petit point) */
+        .section-indicator {
+            display: flex;
+            gap: 8px;
+            margin-left: 20px;
+        }
+        .section-indicator .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #444;
+            transition: background 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+        .section-indicator .dot.active {
+            background: var(--primary);
+            transform: scale(1.3);
         }
 
         .navbar-toggle {
@@ -136,7 +166,16 @@
 
         .section {
             padding: 80px 0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .section.bg-dark {
             background: rgba(0, 0, 0, 0.2);
         }
@@ -228,7 +267,7 @@
             flex-wrap: wrap;
         }
 
-        /* --- PROFIL CARD (STYLE STANDARD) --- */
+        /* --- PROFIL CARD --- */
         .profile-container {
             display: flex;
             flex-direction: column;
@@ -259,7 +298,6 @@
             border-color: var(--primary-border);
         }
 
-        /* --- ZONE PHOTO STANDARD --- */
         .profile-image-zone {
             position: relative;
             width: 100%;
@@ -285,7 +323,6 @@
             transform: scale(1.03);
         }
 
-        /* Overlay subtil pour améliorer la lisibilité */
         .profile-image-zone::after {
             content: '';
             position: absolute;
@@ -298,7 +335,6 @@
             pointer-events: none;
         }
 
-        /* Placeholder image */
         .photo-placeholder {
             width: 100%;
             height: 100%;
@@ -362,7 +398,6 @@
             border-radius: 4px;
         }
 
-        /* --- INFOS PROFIL STANDARD --- */
         .profile-info-zone {
             padding: 25px 30px 30px;
             text-align: center;
@@ -413,8 +448,13 @@
         }
 
         @keyframes statusPulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
-            50% { box-shadow: 0 0 0 8px rgba(76, 175, 80, 0); }
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 8px rgba(76, 175, 80, 0);
+            }
         }
 
         /* --- BOUTONS --- */
@@ -467,14 +507,6 @@
         .section-title {
             text-align: center;
             margin-bottom: 60px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .section-title.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .section-title h2 {
@@ -500,7 +532,7 @@
             border-radius: 2px;
         }
 
-        .section-title.visible h2::after {
+        .section.visible .section-title h2::after {
             width: 70px;
         }
 
@@ -1026,6 +1058,9 @@
             .viz-grid {
                 grid-template-columns: 1fr;
             }
+            .section-indicator {
+                display: none;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1081,6 +1116,9 @@
             .viz-grid {
                 grid-template-columns: 1fr;
                 gap: 25px;
+            }
+            .section-indicator {
+                display: none;
             }
         }
 
@@ -1152,17 +1190,25 @@
             <a class="navbar-brand" href="#accueil">MF<span>=DEV</span></a>
             <button class="navbar-toggle" onclick="toggleMenu()">☰</button>
             <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="#accueil" onclick="closeMenu()"><strong>ACCUEIL</strong></a></li>
-                <li><a href="#services" onclick="closeMenu()"><strong>SERVICES</strong></a></li>
-                <li><a href="#projets" onclick="closeMenu()"><strong>PROJET</strong></a></li>
-                <li><a href="#apropos" onclick="closeMenu()"><strong>À PROPOS</strong></a></li>
-                <li><a href="#contact" onclick="closeMenu()"><strong>CONTACT</strong></a></li>
+                <li><a href="#accueil" onclick="closeMenu()" data-section="accueil"><strong>ACCUEIL</strong></a></li>
+                <li><a href="#services" onclick="closeMenu()" data-section="services"><strong>SERVICES</strong></a></li>
+                <li><a href="#projets" onclick="closeMenu()" data-section="projets"><strong>PROJET</strong></a></li>
+                <li><a href="#apropos" onclick="closeMenu()" data-section="apropos"><strong>À PROPOS</strong></a></li>
+                <li><a href="#contact" onclick="closeMenu()" data-section="contact"><strong>CONTACT</strong></a></li>
             </ul>
+            <!-- Indicateur de section (points) -->
+            <div class="section-indicator" id="sectionIndicator">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+                <span class="dot" data-index="4"></span>
+            </div>
         </div>
     </nav>
 
     <!-- HERO -->
-    <section id="accueil" class="hero-section">
+    <section id="accueil" class="hero-section section visible">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
@@ -1214,7 +1260,7 @@
     </section>
 
     <!-- SERVICES -->
-    <section id="services" class="section">
+    <section id="services" class="section bg-dark">
         <div class="container">
             <div class="section-title">
                 <h2>NOTRE PLAISIR C'EST LA <span class="orange-text">SATISFACTION</span> DES CLIENTS</h2>
@@ -1257,7 +1303,7 @@
     </section>
 
     <!-- PROJETS / STATS -->
-    <section id="projets" class="section bg-dark">
+    <section id="projets" class="section">
         <div class="container">
             <div class="section-title">
                 <h2>REJOIGNEZ-<span class="orange-text">MOI</span></h2>
@@ -1311,7 +1357,7 @@
     </section>
 
     <!-- COMPÉTENCES -->
-    <section id="apropos" class="section">
+    <section id="apropos" class="section bg-dark">
         <div class="container">
             <div class="section-title">
                 <h2>COMPÉTENCES ET <span class="orange-text">PROGRESSION</span></h2>
@@ -1416,7 +1462,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section bg-dark">
+    <section id="contact" class="section">
         <div class="container">
             <div class="section-title">
                 <h2>CONTACTEZ-<span class="orange-text">MOI</span></h2>
@@ -1521,13 +1567,47 @@
             }
         })();
 
-        // --- Navbar / Scroll ---
+        // --- Navbar / Scroll & active link ---
+        const sections = ['accueil', 'services', 'projets', 'apropos', 'contact'];
+        const navLinks = document.querySelectorAll('.navbar-menu a');
+        const dots = document.querySelectorAll('.section-indicator .dot');
+
+        function updateActiveSection() {
+            let current = '';
+            const scrollY = window.scrollY + 120; // offset pour la navbar
+
+            sections.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    const top = el.offsetTop;
+                    const height = el.offsetHeight;
+                    if (scrollY >= top && scrollY < top + height) {
+                        current = id;
+                    }
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.dataset.section === current);
+            });
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', sections[index] === current);
+            });
+        }
+
         window.addEventListener('scroll', function() {
             var n = document.getElementById('navbar');
             n.classList.toggle('scrolled', window.scrollY > 50);
             var b = document.getElementById('scrollToTop');
             b.classList.toggle('visible', window.scrollY > 300);
+            updateActiveSection();
             animateOnScroll();
+        });
+
+        // --- Au chargement, on vérifie la section active ---
+        document.addEventListener('DOMContentLoaded', function() {
+            updateActiveSection();
         });
 
         function scrollToTop() {
@@ -1542,16 +1622,7 @@
             document.getElementById('navbarMenu').classList.remove('active');
         }
 
-        // --- Smooth scroll ---
-        document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-            a.addEventListener('click', function(e) {
-                var h = this.getAttribute('href');
-                if (h === '#') return;
-                e.preventDefault();
-                var t = document.querySelector(h);
-                if (t) window.scrollTo({ top: t.offsetTop - 70, behavior: 'smooth' });
-            });
-        });
+        // --- Smooth scroll (déjà géré par CSS scroll-behavior: smooth) ---
 
         // --- Formulaire ---
         function handleSubmit(e) {
@@ -1576,14 +1647,19 @@
         }
 
         function animateOnScroll() {
-            document.querySelectorAll('.section-title:not(.visible)').forEach(function(t) {
-                if (isInViewport(t, 200)) t.classList.add('visible');
+            // Sections (déjà visible pour l'héro)
+            document.querySelectorAll('.section:not(.hero-section):not(.visible)').forEach(function(t) {
+                if (isInViewport(t, 150)) t.classList.add('visible');
             });
+
+            // Service cards
             document.querySelectorAll('.service-card:not(.visible)').forEach(function(c, i) {
                 if (isInViewport(c, 200)) {
                     setTimeout(function() { c.classList.add('visible'); }, i * 200);
                 }
             });
+
+            // Viz cards
             document.querySelectorAll('.viz-card:not(.visible)').forEach(function(c, i) {
                 if (isInViewport(c, 250)) {
                     setTimeout(function() {
@@ -1631,6 +1707,8 @@
 
         // --- Initialisation au chargement ---
         document.addEventListener('DOMContentLoaded', function() {
+            // On rend la section hero déjà visible
+            document.querySelector('.hero-section')?.classList.add('visible');
             setTimeout(animateOnScroll, 500);
             var vizCards = document.querySelectorAll('.viz-card');
             vizCards.forEach(function(card) {
