@@ -149,7 +149,7 @@
             color: white;
         }
 
-        /* --- SECTION NAVIGATION (boutons suivant/précédent) --- */
+        /* --- SECTION NAVIGATION --- */
         .section-nav {
             display: flex;
             justify-content: space-between;
@@ -168,7 +168,7 @@
             margin: 0 auto;
         }
 
-        /* --- INDICATEUR DE SECTION ACTIVE --- */
+        /* --- INDICATEUR DE SECTION --- */
         .section-indicator {
             position: fixed;
             right: 20px;
@@ -616,7 +616,7 @@
             margin-top: 20px;
         }
 
-        /* --- SERVICES --- */
+        /* --- SERVICES (version mise à jour avec les 6 nouvelles offres) --- */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -650,6 +650,7 @@
             background: rgba(255, 255, 255, 0.04);
         }
 
+        /* Icônes SVG pour chaque service */
         .service-card::before {
             content: "";
             position: absolute;
@@ -669,28 +670,28 @@
             opacity: 0.12;
         }
 
-        .service-dev::before {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpath d='M20 40 L50 20 L80 40' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Cpath d='M80 80 L50 100 L20 80' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3C/svg%3E");
+        .service-fullstack::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect x='25' y='30' width='70' height='30' rx='4' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Crect x='25' y='60' width='70' height='30' rx='4' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Cpath d='M60 30 L60 60' stroke='%23e07b3c' stroke-width='2' /%3E%3C/svg%3E");
+        }
+        .service-uiux::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='40' cy='40' r='18' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Crect x='65' y='25' width='35' height='35' rx='6' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Cpath d='M30 80 L50 95 L70 75' stroke='%23e07b3c' stroke-width='3' fill='none' /%3E%3C/svg%3E");
         }
         .service-responsive::before {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect x='20' y='30' width='60' height='40' rx='4' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Crect x='60' y='50' width='40' height='30' rx='3' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect x='15' y='30' width='40' height='60' rx='5' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Crect x='65' y='25' width='40' height='70' rx='5' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Cpath d='M35 100 L35 110 M85 100 L85 110' stroke='%23e07b3c' stroke-width='2' /%3E%3C/svg%3E");
         }
-        .service-dataviz::before {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cline x1='30' y1='80' x2='30' y2='40' stroke='%23e07b3c' stroke-width='3' /%3E%3Cline x1='60' y1='80' x2='60' y2='20' stroke='%23e07b3c' stroke-width='3' /%3E%3Cline x1='90' y1='80' x2='90' y2='50' stroke='%23e07b3c' stroke-width='3' /%3E%3C/svg%3E");
+        .service-motion::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect x='20' y='35' width='80' height='50' rx='8' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Cpolygon points='45,45 45,75 75,60' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Ccircle cx='45' cy='75' r='6' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3C/svg%3E");
         }
-        .service-design::before {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpolygon points='60,15 90,45 75,85 45,85 30,45' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Ccircle cx='60' cy='55' r='15' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3C/svg%3E");
+        .service-seo::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpath d='M30 80 L60 35 L90 80' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Ccircle cx='60' cy='30' r='10' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Ccircle cx='35' cy='75' r='10' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Ccircle cx='85' cy='75' r='10' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3C/svg%3E");
         }
-        .service-3d::before {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpath d='M30 30 L60 15 L90 30 L60 45 Z' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Cpath d='M30 30 L30 70 L60 85 L60 45' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Cpath d='M90 30 L90 70 L60 85' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3C/svg%3E");
-        }
-        .service-video::before {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect x='20' y='30' width='80' height='60' rx='8' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Cpolygon points='45,45 45,75 75,60' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3C/svg%3E");
+        .service-maintenance::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='35' stroke='%23e07b3c' stroke-width='2' fill='none' /%3E%3Cpath d='M60 25 L60 50 M60 70 L60 95' stroke='%23e07b3c' stroke-width='2' /%3E%3Cpath d='M85 60 L65 60 M55 60 L35 60' stroke='%23e07b3c' stroke-width='2' /%3E%3C/svg%3E");
         }
 
         .service-card h4 {
             font-size: 20px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: var(--primary-light);
             font-weight: 700;
             position: relative;
@@ -1268,7 +1269,7 @@
     <!-- SCROLL TO TOP -->
     <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
 
-    <!-- INDICATEUR DE SECTION (navigation rapide) -->
+    <!-- INDICATEUR DE SECTION -->
     <div class="section-indicator" id="sectionIndicator">
         <div class="dot active" data-target="accueil" title="Accueil">
             <span class="tooltip">Accueil</span>
@@ -1351,7 +1352,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Navigation section -->
             <div class="section-nav">
                 <span></span>
                 <a href="#services" class="btn btn-primary">Section suivante →</a>
@@ -1359,38 +1359,44 @@
         </div>
     </section>
 
-    <!-- SERVICES -->
+    <!-- SERVICES (version mise à jour avec les 6 nouvelles offres) -->
     <section id="services" class="section" data-section="services">
         <div class="container">
             <div class="section-title">
                 <h2>NOTRE PLAISIR C'EST LA <span class="orange-text">SATISFACTION</span> DES CLIENTS</h2>
-                <p><strong>Création de tous types de pages web modernes et responsives</strong></p>
+                <p><strong>Des services complets pour votre succès numérique</strong></p>
             </div>
 
             <div class="services-grid">
-                <div class="service-card service-dev">
-                    <h4>Développement Web</h4>
-                    <p>Sites vitrines, e-commerce, applications web sur mesure avec les dernières technologies</p>
+                <!-- 1. Développement Full Stack -->
+                <div class="service-card service-fullstack">
+                    <h4>Développement Full Stack</h4>
+                    <p>Applications web robustes et évolutives, de la conception à la mise en production.</p>
                 </div>
+                <!-- 2. UI/UX Design -->
+                <div class="service-card service-uiux">
+                    <h4>UI/UX Design</h4>
+                    <p>Interfaces élégantes et intuitives, centrées sur l'expérience utilisateur.</p>
+                </div>
+                <!-- 3. Responsive & Mobile -->
                 <div class="service-card service-responsive">
-                    <h4>Design Responsive</h4>
-                    <p>Interfaces adaptées à tous les écrans : mobile, tablette, desktop</p>
+                    <h4>Responsive & Mobile</h4>
+                    <p>Expérience parfaite sur tous les écrans, du mobile au desktop.</p>
                 </div>
-                <div class="service-card service-dataviz">
-                    <h4>Visualisation de données</h4>
-                    <p>Tableaux de bord interactifs et graphiques pour analyser vos données</p>
+                <!-- 4. Motion Design -->
+                <div class="service-card service-motion">
+                    <h4>Motion Design</h4>
+                    <p>Contenus dynamiques pour les réseaux sociaux et les présentations.</p>
                 </div>
-                <div class="service-card service-design">
-                    <h4>Design Graphique</h4>
-                    <p>Création d'identités visuelles, logos, affiches, brochures et supports de communication</p>
+                <!-- 5. Optimisation SEO -->
+                <div class="service-card service-seo">
+                    <h4>Optimisation SEO</h4>
+                    <p>Meilleur référencement naturel pour gagner en visibilité.</p>
                 </div>
-                <div class="service-card service-3d">
-                    <h4>Plan 3D</h4>
-                    <p>Modélisation 3D, rendus réalistes, visualisation architecturale et animations 3D</p>
-                </div>
-                <div class="service-card service-video">
-                    <h4>Montage Vidéo/Photo</h4>
-                    <p>Montage professionnel, effets visuels, retouche photo et post-production</p>
+                <!-- 6. Maintenance & Support -->
+                <div class="service-card service-maintenance">
+                    <h4>Maintenance & Support</h4>
+                    <p>Accompagnement continu, mises à jour et assistance technique.</p>
                 </div>
             </div>
 
@@ -1400,7 +1406,6 @@
                 </a>
             </div>
 
-            <!-- Navigation section -->
             <div class="section-nav">
                 <a href="#accueil" class="btn btn-secondary">← Section précédente</a>
                 <a href="#projets" class="btn btn-primary">Section suivante →</a>
@@ -1460,7 +1465,6 @@
                 </div>
             </div>
 
-            <!-- Navigation section -->
             <div class="section-nav">
                 <a href="#services" class="btn btn-secondary">← Section précédente</a>
                 <a href="#apropos" class="btn btn-primary">Section suivante →</a>
@@ -1571,7 +1575,6 @@
                 </div>
             </div>
 
-            <!-- Navigation section -->
             <div class="section-nav">
                 <a href="#projets" class="btn btn-secondary">← Section précédente</a>
                 <a href="#contact" class="btn btn-primary">Section suivante →</a>
@@ -1626,7 +1629,6 @@
                 Vos données sont envoyées via Formulaire sécurisé.
             </p>
 
-            <!-- Navigation section -->
             <div class="section-nav">
                 <a href="#apropos" class="btn btn-secondary">← Section précédente</a>
                 <span></span>
@@ -1708,12 +1710,10 @@
                 }
             });
 
-            // Nav links
             navLinks.forEach(function(link) {
                 link.classList.toggle('active', link.getAttribute('data-section') === current);
             });
 
-            // Dots
             dots.forEach(function(dot) {
                 dot.classList.toggle('active', dot.getAttribute('data-target') === current);
             });
@@ -1728,7 +1728,6 @@
             animateOnScroll();
         });
 
-        // Clic sur les dots pour naviguer
         dots.forEach(function(dot) {
             dot.addEventListener('click', function() {
                 var target = this.getAttribute('data-target');
